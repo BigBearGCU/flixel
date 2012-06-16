@@ -75,6 +75,7 @@ package org.flixel.data
 		public var DOWN:Boolean;
 		public var LEFT:Boolean;
 		public var RIGHT:Boolean;
+		public var TAB:Boolean;
 		
 		/**
 		 * @private
@@ -144,6 +145,8 @@ package org.flixel.data
 			addKey("DOWN",40);
 			addKey("LEFT",37);
 			addKey("RIGHT",39);
+
+			addKey("TAB",9);
 		}
 		
 		/**
@@ -231,6 +234,23 @@ package org.flixel.data
 			this[o.name] = false;
 		}
 		
+		/**
+		 * Check to see if any keys are pressed right now.
+		 * 
+		 * @return	Whether any keys are currently pressed.
+		 */
+		public function any():Boolean
+		{
+			var i:uint = 0;
+			while(i < _t)
+			{
+				var o:Object = _map[i++];
+				if((o != null) && (o.current > 0))
+					return true;
+			}
+			return false;
+		}
+
 		/**
 		 * An internal helper function used to build the key array.
 		 * 
